@@ -31,7 +31,7 @@ public class RegisCenterFragment extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddMapActivity.class);
+                Intent intent = new Intent(getActivity(), NewAddMap.class);
                 startActivity(intent);
             }
         });

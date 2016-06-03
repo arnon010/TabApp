@@ -51,7 +51,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/name" />
+                    android:hint="@string/name"
+                    android:id="@+id/edtShop" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -64,7 +65,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/address" />
+                    android:hint="@string/address"
+                    android:id="@+id/edtAddress" />
             </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -77,7 +79,8 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/promotion" />
+                        android:hint="@string/promotion"
+                        android:id="@+id/edtPromote" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -90,7 +93,8 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/tel" />
+                        android:hint="@string/tel"
+                        android:id="@+id/edtPhone" />
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
@@ -105,31 +109,15 @@
                     android:textColor="#FF0000"
                     android:layout_below="@+id/tel" />
 
-                <android.support.design.widget.TextInputLayout
+                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:map="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lat"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/txtPointMap">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/lat"/>
+                    android:layout_height="300dp"
+                    tools:context="com.example.non_jid.tabapp.NewAddMap" />
 
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lng"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/lat">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/lng"/>
-
-                </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -139,7 +127,8 @@
                     android:layout_below="@+id/lng"
                     android:layout_gravity="center"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:onClick="clickUploadValueToServer" />
 
 
 
