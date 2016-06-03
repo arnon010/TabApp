@@ -2,8 +2,10 @@ package com.example.non_jid.tabapp;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -11,6 +13,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
 
 public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
 
@@ -20,6 +31,7 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
     private EditText shopEditext, addressEditext, promoteEditext, phoneEditext;
     private String shopString, addressString, promoteString, phoneString;
     private boolean clickMapABoolean = true;
+    private double latADouble, lngADouble;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +66,47 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
         if (checkSpace()) {
             MyAlert myAlert = new MyAlert();
             myAlert.myDialog(this, "มีช่องว่าง", "กรุณากรอกทุกช่อง");
+        } else if (clickMapABoolean) {
+            MyAlert myAlert = new MyAlert();
+            myAlert.myDialog(this, "ยังไม่เลือกตำแหน่งของร้าน", "โปรดคลิกบนแผนที่เพื่อเลือกตำแหน่ง");
+        } else {
+            uploadValueToServer();
         }
 
     }   //clickUpload
+
+    private void uploadValueToServer() {
+
+        String urlUpLoad = "http://swiftcodingthai.com/non/add_shop_center.php";
+        OkHttpClient okHttpClient = new OkHttpClient();
+        RequestBody requestBody = new FormEncodingBuilder()
+                .add("isAdd", "true")
+                .add("Shop", shopString)
+                .add("Address", addressString)
+                .add("Promote", promoteString)
+                .add("Phone", phoneString)
+                .add("Lat", Double.toString(latADouble))
+                .add("Lng", Double.toString(lngADouble))
+                .build();
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url(urlUpLoad).post(requestBody).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                Log.d("3June", "e = " + e.toString());
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                Log.d("3June", "ok");
+            }
+        });
+
+        Toast.makeText(this, "อัพเดท ร้านเรียบร้อย", Toast.LENGTH_SHORT).show();
+        finish();
+
+    }   //upload
 
     private boolean checkSpace() {
 
@@ -84,12 +134,19 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
             @Override
             public void onMapClick(LatLng latLng) {
 
+                if (clickMapABoolean) {
+                    clickMapABoolean = false;
+                }
+
                 //Clear All Marker
                 mMap.clear();
 
                 //Create Marker
                 mMap.addMarker(new MarkerOptions()
                 .position(latLng));
+
+                latADouble = latLng.latitude;
+                lngADouble = latLng.longitude;
 
             } //OnMapClick
         });
