@@ -19,6 +19,7 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private EditText shopEditext, addressEditext, promoteEditext, phoneEditext;
     private String shopString, addressString, promoteString, phoneString;
+    private boolean clickMapABoolean = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +75,25 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Set Up center map
+        LatLng latLng = new LatLng(13.661637,100.351777); // my home
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+
+        //Click Able on map
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                //Clear All Marker
+                mMap.clear();
+
+                //Create Marker
+                mMap.addMarker(new MarkerOptions()
+                .position(latLng));
+
+            } //OnMapClick
+        });
+
     }// on Map Ready
 
 
