@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">BikeSearch</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Add Map -->
+    <string name="addmap">เพิ่มศูนย์ / ร้านซ่อม</string>
+    <string name="name">ชื่อศูนย์ / ร้าน</string>
+    <string name="address">ที่อยู่</string>
+    <string name="promotion">โปรโมชั่นของทางร้าน   (***ถ้ามี***)</string>
+    <string name="tel">เบอร์โทรศัพท์</string>
+    <string name="pointMap">ค้นหาละติจูด,ลองติจูด***</string>
+    <string name="lat">ละติจูด</string>
+    <string name="lng">ลองติจูด</string>
+    <string name="gotomap">Go To Map</string>
+    <string name="title_activity_address_list">AddressListActivity</string>
+    <string name="title_activity_map_main">Map</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
