@@ -8,14 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
- * Created by Non_jid on 22/7/2559.
+ * Created by masterUNG on 7/22/2016 AD.
  */
 public class MyAdapter extends BaseAdapter{
 
     //Explicit
-
     private Context context;
-    private String [] shopStrings, phoneStrings, promoteStrings;
+    private String[] shopStrings, phoneStrings, promoteStrings;
+    private String shortPromote;
 
     public MyAdapter(Context context,
                      String[] shopStrings,
@@ -33,33 +33,39 @@ public class MyAdapter extends BaseAdapter{
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int i) {
         return null;
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int i) {
         return 0;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int i, View view, ViewGroup viewGroup) {
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.my_listview, parent, false);
+        View view1 = layoutInflater.inflate(R.layout.my_listview, viewGroup, false);
 
         //Bind Widget
-        TextView shopTextView = (TextView) view.findViewById(R.id.txShop);
-        TextView phoneTextView = (TextView) view.findViewById(R.id.txPhone);
-        TextView promoteTextView = (TextView) view.findViewById(R.id.txPromote);
+        TextView shopTextView = (TextView) view1.findViewById(R.id.txShop);
+        TextView phoneTextView = (TextView) view1.findViewById(R.id.txPhone);
+        TextView promoteTextView = (TextView) view1.findViewById(R.id.txPromote);
 
         //Show Text
-        shopTextView.setText(shopStrings[position]);
-        phoneTextView.setText(phoneStrings[position]);
+        shopTextView.setText(shopStrings[i]);
+        phoneTextView.setText(phoneStrings[i]);
 
-        String shortPromote = promoteStrings[position].substring(0, 30) + "...";
+        if (promoteStrings[i].length() < 30) {
+            shortPromote = promoteStrings[i];
+        } else {
+            shortPromote = promoteStrings[i].substring(0, 30) + "...";
+        }
+
+
         promoteTextView.setText(shortPromote);
 
-        return view;
+        return view1;
     }
-}//Main Class
+}   // Main Class

@@ -9,12 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -43,37 +45,38 @@ public class ListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        //Test ListView
+        //Test List View
 
-//        String[] testStrings = new String(){"test1","test2","test3","test4","test5"};
+//        String[] testStrings = new String[]{"test1", "test2", "test3", "test4", "test5"};
 //
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                android.R.layout.simple_list_item_1, testStrings);
-//                listView.setAdapter(adapter);
-
+//        listView.setAdapter(adapter);
 
         //Call AsyncTask
         SynShopCenter synShopCenter = new SynShopCenter(this, listView);
         synShopCenter.execute();
 
 
-    }//Main Method
+    }   // Main Method
 
     private class SynShopCenter extends AsyncTask<Void, Void, String> {
 
         //Explicit
         private Context context;
         private ListView synListView;
-        private String[]shopStrings, addressStrings, promoteStrings, phoneStrings, latStrings, lngStrings;
+        private String[] shopStrings, addressStrings, promoteStrings,
+                phoneStrings, latStrings, lngStrings;
         private static final String urlJSON = "http://swiftcodingthai.com/non/getdata_shop.php";
 
-        public SynShopCenter(Context context, ListView synListView) {
+        public SynShopCenter(Context context,
+                             ListView synListView) {
             this.context = context;
             this.synListView = synListView;
         }
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(Void... voids) {
 
             try {
 
@@ -88,7 +91,7 @@ public class ListActivity extends AppCompatActivity {
                 return null;
             }
 
-        }//doInBack
+        }   // doInBack
 
         @Override
         protected void onPostExecute(String s) {
@@ -96,10 +99,45 @@ public class ListActivity extends AppCompatActivity {
 
             Log.d("22JulyV1", "JSON ==> " + s);
 
-        }//onPost
+            try {
 
-    }//SynShopCenter Class
+                JSONArray jsonArray = new JSONArray(s);
+
+                shopStrings = new String[jsonArray.length()];
+                addressStrings = new String[jsonArray.length()];
+                promoteStrings = new String[jsonArray.length()];
+                phoneStrings = new String[jsonArray.length()];
+                latStrings = new String[jsonArray.length()];
+                lngStrings = new String[jsonArray.length()];
+
+                for (int i=0;i<jsonArray.length();i+=1) {
+
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    shopStrings[i] = jsonObject.getString("Shop");
+                    addressStrings[i] = jsonObject.getString("Address");
+                    promoteStrings[i] = jsonObject.getString("Promote");
+                    phoneStrings[i] = jsonObject.getString("Phone");
+                    latStrings[i] = jsonObject.getString("Lat");
+                    lngStrings[i] = jsonObject.getString("Lng");
+
+                }   // for
+
+                //Create ListView
+                MyAdapter myAdapter = new MyAdapter(context,
+                        shopStrings, phoneStrings, promoteStrings);
+                synListView.setAdapter(myAdapter);
 
 
 
-}//Main class
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }   // onPost
+
+    }   // SynShopCenter Class
+
+
+}   // Main Class
