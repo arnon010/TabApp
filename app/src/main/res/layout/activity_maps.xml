@@ -8,16 +8,23 @@ android:background="#E4E4E4"
 android:orientation="vertical"
 tools:context="com.example.non_jid.tabapp.MapsActivity">
 
+    <View
+        android:id="@+id/banner_line1"
+        android:background="#145AC1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="3dp" />
 <ImageView
     android:id="@+id/banner"
+    android:layout_below="@+id/banner_line1"
     android:layout_width="fill_parent"
     android:layout_height="70dp"
-    android:layout_alignParentTop="true"
     android:background="@color/colorPrimaryTB"
     android:scaleType="fitCenter"
     android:src="@drawable/menusearch" />
     <View
-        android:id="@+id/banner_line"
+        android:id="@+id/banner_line2"
         android:layout_below="@+id/banner"
         android:background="#145AC1"
         android:layout_width="match_parent"
@@ -34,6 +41,37 @@ tools:context="com.example.non_jid.tabapp.MapsActivity">
     android:layout_height="match_parent"
     android:layout_below="@+id/banner"
     class="com.google.android.gms.maps.SupportMapFragment" />
+
+    <ImageButton
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/btnZoomIn"
+        android:background="@drawable/circlebutton"
+        android:onClick="onZoom"
+        android:enabled="true"
+        android:src="@drawable/ic_zoom_in_light_blue_500_36dp"
+        android:layout_above="@+id/btnZoomOut"
+        android:layout_alignRight="@+id/map"
+        android:layout_alignEnd="@+id/map" />
+
+
+    <ImageButton
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:id="@+id/btnZoomOut"
+        android:background="@drawable/circlebutton"
+        android:onClick="onZoom"
+        android:enabled="true"
+        android:src="@drawable/ic_zoom_out_light_blue_500_36dp"
+        android:layout_alignBottom="@+id/map"
+        android:layout_alignRight="@+id/map"
+        android:layout_alignEnd="@+id/map"
+        android:layout_marginBottom="44dp" />
 
 
 </RelativeLayout>

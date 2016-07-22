@@ -124,6 +124,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/addmap"
                     android:id="@+id/bntAddMap"
+                    android:background="@drawable/circlebutton"
+                    android:textColor="#03A9F4"
                     android:layout_below="@+id/lng"
                     android:layout_gravity="center"
                     android:layout_marginRight="15dp"

@@ -20,14 +20,14 @@
             android:src="@drawable/ic_directions_bike_black_24dp"/>
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/txt_title"
             android:text="address title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#333333" />
 
         <TextView
-            android:id="@+id/tv_lat"
+            android:id="@+id/txt_lat"
             android:text="latitude"
             android:textColor="#3575E0"
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
 
 
         <TextView
-            android:id="@+id/tv_lng"
+            android:id="@+id/txt_lng"
             android:text="longtitude"
             android:textColor="#3575E0"
             android:layout_width="wrap_content"

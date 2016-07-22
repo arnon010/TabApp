@@ -1,6 +1,8 @@
 package com.example.non_jid.tabapp;
 
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.LayoutInflaterCompat;
@@ -44,8 +46,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mMap.setInfoWindowAdapter(this);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+
 
         // Add a marker in Sydney and move the camera
         LatLng chorcharearn = new LatLng(13.677017, 100.345347);
@@ -83,10 +98,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(papas, 16));
         LatLng myhome = new LatLng(13.661637, 100.351777);
         mMap.addMarker(new MarkerOptions().position(myhome).icon(BitmapDescriptorFactory.fromResource(R.drawable.pin)).title("My Home").snippet("บ้านของฉัน"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myhome, 13));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myhome, 14));
 
 
     }
+
+    public void onZoom(View view) {
+        if (view.getId() == R.id.btnZoomIn) {
+            mMap.animateCamera(CameraUpdateFactory.zoomIn());
+        }
+        if (view.getId() == R.id.btnZoomOut) {
+            mMap.animateCamera(CameraUpdateFactory.zoomOut());
+        }
+    }
+
 
     @Override
     public View getInfoWindow(Marker marker) {

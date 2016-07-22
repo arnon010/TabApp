@@ -124,10 +124,11 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
         // Set Up center map
         LatLng latLng = new LatLng(13.661637,100.351777); // my home
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
 
         //Click Able on map
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
