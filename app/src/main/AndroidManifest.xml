@@ -58,6 +58,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.non_jid.tabapp.MainActivity" />
         </activity>
+        <activity
+            android:name=".ShowDetailActivity"
+            android:label="@string/title_activity_show_detail">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.non_jid.tabapp.ListActivity" />
+        </activity>
     </application>
 
 </manifest>
