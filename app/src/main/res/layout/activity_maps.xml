@@ -71,7 +71,7 @@ tools:context="com.example.non_jid.tabapp.MapsActivity">
         android:layout_alignBottom="@+id/map"
         android:layout_alignRight="@+id/map"
         android:layout_alignEnd="@+id/map"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="200dp"/>
 
 
 </RelativeLayout>
