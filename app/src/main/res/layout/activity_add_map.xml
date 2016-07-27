@@ -33,7 +33,7 @@
         android:layout_alignEnd="@+id/textView3">
 
         <ScrollView
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scrollView">
             <LinearLayout
@@ -109,14 +109,50 @@
                     android:textColor="#FF0000"
                     android:layout_below="@+id/tel" />
 
-                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:map="http://schemas.android.com/apk/res-auto"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    tools:context="com.example.non_jid.tabapp.NewAddMap" />
+                    android:layout_height="match_parent">
+
+                    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:map="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="313dp"
+                        android:layout_height="300dp"
+                        tools:context="com.example.non_jid.tabapp.NewAddMap" />
+
+                    <ImageButton
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/btnZoomIn"
+                        android:background="@drawable/circlebutton"
+                        android:onClick="onZoom"
+                        android:enabled="true"
+                        android:src="@drawable/ic_zoom_in_light_blue_500_36dp"
+                        android:layout_above="@+id/btnZoomOut"
+                        android:layout_alignRight="@+id/map"
+                        android:layout_alignEnd="@+id/map" />
+
+
+                    <ImageButton
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/btnZoomOut"
+                        android:background="@drawable/circlebutton"
+                        android:onClick="onZoom"
+                        android:enabled="true"
+                        android:src="@drawable/ic_zoom_out_light_blue_500_36dp"
+                        android:layout_alignBottom="@+id/map"
+                        android:layout_alignRight="@+id/map"
+                        android:layout_alignEnd="@+id/map"
+                        android:layout_marginBottom="100dp"/>
+                </RelativeLayout>
 
 
                 <Button
@@ -128,8 +164,6 @@
                     android:textColor="#03A9F4"
                     android:layout_below="@+id/lng"
                     android:layout_gravity="center"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="20dp"
                     android:onClick="clickUploadValueToServer" />
 
 

@@ -1,6 +1,7 @@
 package com.example.non_jid.tabapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -113,6 +114,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
                 }//for
+
+                myGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+
+                        Log.d("22JulyV3", "Shop ==>" + marker.getTitle());
+
+                        return true;
+                    }
+                });
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
