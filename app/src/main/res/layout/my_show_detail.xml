@@ -61,6 +61,6 @@
         tools:context="com.example.non_jid.tabapp.ShowDetailActivity"
         android:layout_below="@+id/linTopShow"
         android:layout_above="@+id/button"
-        android:layout_margin="20dp" />
+        android:layout_margin="20dp"/>
 
 </RelativeLayout>
