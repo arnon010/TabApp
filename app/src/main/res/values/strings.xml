@@ -9,7 +9,7 @@
     <string name="addmap">เพิ่มศูนย์ / ร้านซ่อม</string>
     <string name="name">ชื่อศูนย์ / ร้าน</string>
     <string name="address">ที่อยู่</string>
-    <string name="promotion">โปรโมชั่นของทางร้าน   (***ถ้ามี***)</string>
+    <string name="promotion">จุดเด่นของทางร้าน</string>
     <string name="tel">เบอร์โทรศัพท์</string>
     <string name="pointMap">ค้นหาละติจูด,ลองติจูด***</string>
     <string name="lat">ละติจูด</string>

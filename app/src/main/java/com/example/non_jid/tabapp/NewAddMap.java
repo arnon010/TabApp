@@ -198,7 +198,7 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
     private void showDialogGPS() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-        builder.setTitle("Enable GPS");
+        builder.setTitle("Enable GPS!!!");
         builder.setMessage("Please enable GPS");
         builder.setInverseBackgroundForced(true);
         builder.setPositiveButton("Enable", new DialogInterface.OnClickListener() {
@@ -207,7 +207,7 @@ public class NewAddMap extends FragmentActivity implements OnMapReadyCallback {
                         new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
             }
         });
-        builder.setNegativeButton("Ignore", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }

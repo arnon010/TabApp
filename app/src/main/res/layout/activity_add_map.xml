@@ -9,32 +9,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg_add"
+    android:background="@drawable/bg_addshop"
     tools:context="com.example.non_jid.tabapp.AddMapActivity">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="                                          "
-    android:id="@+id/textView3"
-    android:textSize="30dp"
-    android:layout_marginTop="50dp"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:id="@+id/linearAdd"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textView3"
-        android:layout_marginLeft="10dp"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_alignEnd="@+id/textView3">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="135dp"
             android:id="@+id/scrollView">
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -96,80 +85,87 @@
                         android:hint="@string/tel"
                         android:id="@+id/edtPhone" />
                 </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/pointMap"
-                    android:id="@+id/txtPointMap"
-                    android:textSize="25dp"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:textColor="#FF0000"
-                    android:layout_below="@+id/tel" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                        xmlns:map="http://schemas.android.com/apk/res-auto"
-                        xmlns:tools="http://schemas.android.com/tools"
-                        android:id="@+id/map"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
-                        android:layout_width="313dp"
-                        android:layout_height="300dp"
-                        tools:context="com.example.non_jid.tabapp.NewAddMap" />
-
-                    <ImageButton
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:id="@+id/btnZoomIn"
-                        android:background="@drawable/circlebutton"
-                        android:onClick="onZoom"
-                        android:enabled="true"
-                        android:src="@drawable/ic_zoom_in_light_blue_500_36dp"
-                        android:layout_above="@+id/btnZoomOut"
-                        android:layout_alignRight="@+id/map"
-                        android:layout_alignEnd="@+id/map" />
-
-
-                    <ImageButton
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:id="@+id/btnZoomOut"
-                        android:background="@drawable/circlebutton"
-                        android:onClick="onZoom"
-                        android:enabled="true"
-                        android:src="@drawable/ic_zoom_out_light_blue_500_36dp"
-                        android:layout_alignBottom="@+id/map"
-                        android:layout_alignRight="@+id/map"
-                        android:layout_alignEnd="@+id/map"
-                        android:layout_marginBottom="100dp"/>
-                </RelativeLayout>
-
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/addmap"
-                    android:id="@+id/bntAddMap"
-                    android:background="@drawable/circlebutton"
-                    android:textColor="#03A9F4"
-                    android:layout_below="@+id/lng"
-                    android:layout_gravity="center"
-                    android:onClick="clickUploadValueToServer" />
-
-
-
             </LinearLayout>
         </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearAdd"
+        android:layout_alignLeft="@+id/linearAdd"
+        android:layout_alignStart="@+id/linearAdd"
+        android:layout_alignRight="@+id/linearAdd"
+        android:layout_alignEnd="@+id/linearAdd">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/pointMap"
+                android:id="@+id/txtPointMap"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textColor="#FF0000" />
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="313dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="50dp"
+                tools:context="com.example.non_jid.tabapp.NewAddMap" />
+
+            <ImageButton
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnZoomIn"
+                android:background="@drawable/circlebutton"
+                android:onClick="onZoom"
+                android:enabled="true"
+                android:src="@drawable/ic_zoom_in_light_blue_500_36dp"
+                android:layout_alignTop="@+id/map"
+                android:layout_alignLeft="@+id/bntAddMap"
+                android:layout_alignStart="@+id/bntAddMap" />
+
+
+            <ImageButton
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnZoomOut"
+                android:background="@drawable/circlebutton"
+                android:onClick="onZoom"
+                android:enabled="true"
+                android:src="@drawable/ic_zoom_out_light_blue_500_36dp"
+                android:layout_alignTop="@+id/map"
+                android:layout_alignRight="@+id/bntAddMap"
+                android:layout_alignEnd="@+id/bntAddMap" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addmap"
+                android:id="@+id/bntAddMap"
+                android:background="@drawable/circlebutton"
+                android:textColor="#03A9F4"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:onClick="clickUploadValueToServer"
+                android:layout_below="@+id/map"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 
